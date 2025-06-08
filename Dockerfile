@@ -27,7 +27,7 @@ RUN wget https://www.unrealircd.org/downloads/unrealircd-${VERSION}.tar.gz \
  && ./Config --prefix=/home/unrealircd --with-module-dir=/home/unrealircd/modules \
  && make && make install
 
-WORKDIR /home/unrealircd
+WORKDIR /home/unrealircd/unrealircd
 EXPOSE 6667 6697 7000
 VOLUME ["/home/unrealircd/conf","/home/unrealircd/data"]
 
