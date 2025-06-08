@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  unrealircd:
+    build:
+      context: .
+      args:
+        - VERSION=6.2.10
+    image: yourname/unrealircd:6.2.10
+    ports:
+      - "6667:6667"
+      - "6697:6697"
+      - "7000:7000"
+    volumes:
+      - /srv/unrealircd/conf:/home/unrealircd/conf
+      - /srv/unrealircd/data:/home/unrealircd/data
