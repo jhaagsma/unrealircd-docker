@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   unrealircd:
     build:
@@ -11,5 +10,14 @@ services:
       - "6697:6697"
       - "7000:7000"
     volumes:
-      - /srv/unrealircd/conf:/home/unrealircd/conf
-      - /srv/unrealircd/data:/home/unrealircd/data
+      - /srv/unrealircd/conf:/home/unrealircd/unrealircd/conf
+      - /srv/unrealircd/data:/home/unrealircd/unrealircd/data
+      - /srv/unrealircd/logs:/home/unrealircd/unrealircd/logs
+      # mount certbot cert & key:
+      - /etc/letsencrypt/live/earthempires.com/fullchain.pem:/home/unrealircd/unrealircd/conf/tls/server.cert.pem:ro
+      - /etc/letsencrypt/live/earthempires.com/privkey.pem:/home/unrealircd/unrealircd/conf/tls/server.key.pem:ro
+    # Override the default run
+    entrypoint: ["/bin/sh","-c"]
+    command: >
+      "/home/unrealircd/unrealircd/unrealircd start &&
+       tail -F /home/unrealircd/unrealircd/logs/ircd.log"
