@@ -33,4 +33,6 @@ VOLUME ["/home/unrealircd/conf","/home/unrealircd/data"]
 
 # Hand off to the non‐root UnrealIRCd entrypoint
 USER unrealircd
-CMD ["./unrealircd"]
+
+ENTRYPOINT ["./unrealircd"]
+CMD        ["start"]
