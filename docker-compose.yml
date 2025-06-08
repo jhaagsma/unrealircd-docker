@@ -5,7 +5,7 @@ services:
       context: .
       args:
         - VERSION=6.2.10
-    image: yourname/unrealircd:6.2.10
+    image: jhaagsma/unrealircd:6.2.10
     ports:
       - "6667:6667"
       - "6697:6697"
