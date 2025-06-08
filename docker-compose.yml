@@ -13,9 +13,9 @@ services:
       - /srv/unrealircd/conf:/home/unrealircd/unrealircd/conf
       - /srv/unrealircd/data:/home/unrealircd/unrealircd/data
       - /srv/unrealircd/logs:/home/unrealircd/unrealircd/logs
-      # mount certbot cert & key:
-      - /etc/letsencrypt/live/earthempires.com/fullchain.pem:/home/unrealircd/unrealircd/conf/tls/server.cert.pem:ro
-      - /etc/letsencrypt/live/earthempires.com/privkey.pem:/home/unrealircd/unrealircd/conf/tls/server.key.pem:ro
+      # mount certbot cert & key; set IRCD_DOMAIN in .env file next to this file with IRCD_DOMAIN=my.example.com
+      - /etc/letsencrypt/live/${IRCD_DOMAIN}/fullchain.pem:/home/unrealircd/unrealircd/conf/tls/server.cert.pem:ro
+      - /etc/letsencrypt/live/${IRCD_DOMAIN}/privkey.pem:/home/unrealircd/unrealircd/conf/tls/server.key.pem:ro
     # Override the default run
     entrypoint: ["/bin/sh","-c"]
     command: >
