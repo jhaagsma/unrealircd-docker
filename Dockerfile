@@ -5,8 +5,8 @@ RUN apt-get update \
  && apt-get install -y wget gcc make libssl-dev
 
 # pull & compile UnrealIRCd
-ARG VERSION=6.2.10
-RUN wget https://www.unrealircd.org/downloads/unrealircd-${VERSION}.tar.gz \
+ARG VERSION=6.1.10
+RUN wget https://www.unrealircd.org/download/unrealircd-${VERSION}.tar.gz \
  && tar xzf unrealircd-${VERSION}.tar.gz \
  && cd unrealircd-${VERSION} \
  && ./Config --with-module-dir=/usr/lib/unrealircd/modules \
